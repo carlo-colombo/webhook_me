@@ -39,7 +39,6 @@ defmodule WebhookMe.Mixfile do
      {:commander, "~> 0.1"},
      {:meter, "~> 0.1"},
      {:credo, "~> 0.4", only: [:test, :dev]},
-     {:mock, "~> 0.1.3", only: :test}
-    ]
+     {:mock, "~> 0.1.3", only: :test}]
   end
 end
