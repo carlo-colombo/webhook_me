@@ -2,6 +2,7 @@ use Amnesia
 
 defmodule DBA do
   def install do
+    IO.puts("installing")
     Amnesia.Schema.create
     Amnesia.start
     DB.create()
@@ -27,12 +28,12 @@ defdatabase DB do
 
     def new(chat_id) do
       %WebHook{chat_id: chat_id, counter: 0, disabled: false}
-      |> WebHook.write!
+      |> WebHook.write
 
       Hashids.encode(hashid, chat_id)
     end
 
-    def find(id) do
+    def lookup(id) do
       {:ok, [chat_id]} = Hashids.decode(hashid, id)
       WebHook.read(chat_id)
     end
