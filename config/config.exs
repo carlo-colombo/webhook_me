@@ -28,3 +28,22 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
+port =
+  (System.get_env("PORT") || "8081")
+  |> Integer.parse
+  |> elem(0)
+
+base_address = System.get_env("BASE_ADDRESS") || "http://localhost:#{port}"
+
+token = System.get_env("TELEGRAM_BOT_TOKEN")
+
+config :maru, WebhookMe,
+http: [port: 8880]
+
+
+config :nadia,
+token: token
+
+config :webhook_me,
+base_address: base_address
+
