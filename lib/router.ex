@@ -8,6 +8,8 @@ defmodule WebhookMe.Router do
 
     def encode(chat_id), do: Hashids.encode(@coder, chat_id)
 
+    version "v1"
+
     namespace :wh do
       route_param :hashids do
         params do

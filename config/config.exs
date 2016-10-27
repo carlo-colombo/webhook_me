@@ -38,12 +38,14 @@ base_address = System.get_env("BASE_ADDRESS") || "http://localhost:#{port}"
 token = System.get_env("TELEGRAM_BOT_TOKEN")
 
 config :maru, WebhookMe,
-http: [port: 8880]
-
+  http: [port: 8880],
+  versioning: [
+    using: :path
+  ]
 
 config :nadia,
-token: token
+  token: token
 
 config :webhook_me,
-base_address: base_address
+  base_address: base_address
 
