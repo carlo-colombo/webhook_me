@@ -1,4 +1,4 @@
-defmodule WebhookMe.Router do
+defmodule WebhookMe.Router.Webhook.V1   do
   use Maru.Router
 
   @coder Hashids.new([
@@ -7,6 +7,11 @@ defmodule WebhookMe.Router do
                    ])
 
     def encode(chat_id), do: Hashids.encode(@coder, chat_id)
+
+    def generate_url(chat_id) do
+      base_address = Application.get_env(:webhook_me, :base_address)
+      "#{base_address}/v1/wh/#{encode(chat_id)}?message=Test%20WebhookMe"
+    end
 
     version "v1"
 
@@ -27,29 +32,4 @@ defmodule WebhookMe.Router do
       {:ok, res} = Nadia.send_message(chat_id, params[:message] )
       res
     end
-
-    # route_param :token do
-    #   namespace :hook do
-    #   #start
-    #   end
-    # end
-
-    # def polling(offset \\ 0) do
-    #   try do
-    #     {:ok, updates } = Nadia.get_updates([{:offset, offset}])
-    #     update_id = for update <- updates do
-    #       entry_point(update)
-    #       update.update_id
-    #     end |> List.last
-
-    #     offset = if update_id == nil do
-    #       offset
-    #     else
-    #       update_id + 1
-    #     end
-
-    #     :timer.sleep(2000)
-    #     spawn(fn  -> polling(offset) end)
-    #   catch _->nil end
-    # end
 end
