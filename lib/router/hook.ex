@@ -2,17 +2,17 @@ defmodule WebhookMe.Router.TelegramHook do
   use Maru.Router
   alias WebhookMe.Router.Webhook.V1
 
-  # route_param :token do
-  #   namespace :hook do
-  #     post do
-  #       conn.body_params
-  #       |> entry_point
-  #       |> get_resp()
+  route_param :token do
+    namespace :hook do
+      post do
+        resp = conn.body_params
+               |> entry_point
+               |> get_resp
 
-  # json(conn, %{})
-  #     end
-  #   end
-  # end
+        json conn, resp
+      end
+    end
+  end
 
   defp get_resp({_, resp}), do: resp
   defp get_resp(t), do: %{}
