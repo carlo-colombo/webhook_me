@@ -14,8 +14,10 @@ defmodule WebhookMe.Router.TelegramHook do
     end
   end
 
+  @as_markdown [{:parse_mode, "Markdown"}]
+
   defp dispatch(chat_id, "/start" <> _) do
-    Nadia.send_message(chat_id, V1.generate_url(chat_id))
+    Nadia.send_message(chat_id, V1.start_message(chat_id), @as_markdown)
   end
 
   defp dispatch(chat_id, _) do
