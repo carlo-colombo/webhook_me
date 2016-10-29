@@ -14,8 +14,7 @@ defmodule WebhookMe.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :nadia, :maru, :hashids],
-     mod: {WebhookMe, [Mix.env]}]
+    [applications: [:logger, :amnesia, :exsync]]
   end
 
   # Dependencies can be Hex packages:
@@ -28,7 +27,8 @@ defmodule WebhookMe.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:nadia, "~> 0.4"},
+    [{:amnesia, "~> 0.2.5"},
+     {:nadia, "~> 0.4"},
      {:hashids, "~> 2.0"},
      {:maru, "~> 0.10.4"},
      {:exsync, "~> 0.1", only: :dev},
@@ -40,6 +40,6 @@ defmodule WebhookMe.Mixfile do
      {:meter, "~> 0.1"},
      {:credo, "~> 0.4", only: [:test, :dev]},
      {:mock, "~> 0.1.3", only: :test}
-   ]
+    ]
   end
 end
