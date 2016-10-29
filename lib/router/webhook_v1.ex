@@ -5,6 +5,9 @@ defmodule WebhookMe.Router.Webhook.V1   do
                      salt: "that's the salt",
                      min_len: 10
                    ])
+    @default_message """
+    The webhook have been called, see /start for customizing this message
+    """
 
     def encode(chat_id), do: Hashids.encode(@coder, chat_id)
 
@@ -18,7 +21,7 @@ defmodule WebhookMe.Router.Webhook.V1   do
     namespace :wh do
       route_param :hashids do
         params do
-          requires :message, type: String
+          optional :message, type: String
         end
         get do
           json conn, send_message(params)
@@ -28,8 +31,10 @@ defmodule WebhookMe.Router.Webhook.V1   do
 
     def send_message(params) do
       hashids = params[:hashids]
+      message = params[:message] || @default_message
+
       {:ok, [chat_id]} = Hashids.decode(@coder, hashids)
-      {:ok, res} = Nadia.send_message(chat_id, params[:message] )
+      {:ok, res} = Nadia.send_message(chat_id, message)
       res
     end
 end
