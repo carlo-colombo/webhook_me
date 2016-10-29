@@ -20,17 +20,31 @@ defmodule WebhookMe.Router.Webhook.V1   do
 
     namespace :wh do
       route_param :hashids do
-        params do
-          optional :message, type: String
-          optional :msg, type: String
-          exactly_one_of [:message, :msg]
+        namespace :get do
+          params do
+            optional :message, type: String
+            optional :msg, type: String
+          end
+          get do
+            json conn, send_message(params)
+          end
         end
-        get do
-          json conn, send_message(params)
+        namespace :post do
+          post do
+            body = conn.body_params
+            json conn, send_message(params[:hashids], body) 
+          end
         end
       end
     end
 
+
+    def send_message(hashids, %{"message" => message}) do
+      send_message([hashids: hashids, message: message])
+    end
+    def send_message(hashids, %{"msg" => message}) do
+      send_message([hashids: hashids, message: message])
+    end
     def send_message(params) do
       hashids = params[:hashids]
       message = params[:message] || params[:msg] || @default_message
