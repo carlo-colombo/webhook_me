@@ -24,7 +24,7 @@ defmodule WebhookMe.Router.TelegramHook do
     Nadia.send_message(chat_id, "Only supported command is /start")
   end
 
-  def entry_point(%{message: %{chat: %{id: chat_id}, text: message}} ) do
+  def entry_point(%{"message" => %{"chat" => %{"id" => chat_id}, "text" => message}} ) do
     dispatch(chat_id, message)
   end
 
