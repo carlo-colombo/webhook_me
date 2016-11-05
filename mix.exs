@@ -16,7 +16,8 @@ defmodule WebhookMe.Mixfile do
   def application do
     [applications: [
       :logger,
-      :nadia
+      :nadia,
+      :hashids
     ]
     ++ env_apps(Mix.env, :dev,  [:maru, :exsync])
     ++ env_apps(Mix.env, :prod, [:maru]),
@@ -40,12 +41,9 @@ defmodule WebhookMe.Mixfile do
      {:hashids, "~> 2.0"},
      {:maru, "~> 0.10.4"},
      {:exsync, "~> 0.1", only: :dev},
-     {:exrm, "~> 1.0.8", override: true},
+     {:distillery, "~> 0.10"},
      {:edib, "~> 0.8"},
      {:conform, "~> 2.1", override: true},
-     {:conform_exrm, "~> 1.0"},
-     {:commander, "~> 0.1"},
-     {:meter, "~> 0.1"},
      {:credo, "~> 0.4", only: [:test, :dev]},
      {:mock, "~> 0.1.3", only: :test}
    ]

@@ -47,5 +47,6 @@ config :nadia,
   token: token
 
 config :webhook_me,
-  base_address: base_address
+  base_address: base_address,
+  hashids_salt: System.get_env("HASHIDS_SALT")
 

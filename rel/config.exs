@@ -29,8 +29,13 @@ end
 # If you have not set a default release, or selected one
 # when running `mix release`, the first release in the file
 # will be used by default
+conform_prestart = Path.join(["#{:code.priv_dir(:conform)}",
+                             "bin",
+                             "pre_start.sh"])
 
 release :webhook_me do
   set version: current_version(:webhook_me)
+  set pre_start_hook: conform_prestart
+  plugin Conform.ReleasePlugin
 end
 
