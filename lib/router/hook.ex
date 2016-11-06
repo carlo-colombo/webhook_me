@@ -12,6 +12,10 @@ defmodule WebhookMe.Router.TelegramHook do
         json conn, resp
       end
     end
+    namespace :status do
+      get  do: json conn, %{ok: "System is running"}
+      head do: json conn, %{ok: "System is running"}
+    end
   end
 
   @as_markdown [{:parse_mode, "Markdown"}]
