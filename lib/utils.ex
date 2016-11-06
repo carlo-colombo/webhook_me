@@ -23,7 +23,7 @@ defmodule TelegramBot.Utils do
 
   def polling(offset \\ 0, dispatch) do
     try do
-      {:ok, updates } = Nadia.get_updates([{:offset, offset}])
+      {:ok, updates} = Nadia.get_updates([{:offset, offset}])
       offset = Enum.reduce(updates, offset, fn (update, _) ->
         update
         |> to_string_map
@@ -35,7 +35,7 @@ defmodule TelegramBot.Utils do
       :timer.sleep(2000)
 
       spawn(fn  -> polling(offset, dispatch) end)
-    catch _->nil end
+    catch _ -> nil end
   end
 
   def set_webhook(hook, dispatch_fallback \\ fn -> nil end) do
@@ -56,8 +56,8 @@ defmodule TelegramBot.Utils do
     def call(conn, opts) do
       paths = conn.path_info
 
-      if (Enum.member?(opts[:paths], :hook)
-        and hd(paths) != Application.get_env(:nadia, :token)) do
+      if Enum.member?(opts[:paths], :hook)
+        and hd(paths) != Application.get_env(:nadia, :token) do
         send_resp(conn, 501, "Invalid token")
       end
       conn

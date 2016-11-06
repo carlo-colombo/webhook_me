@@ -3,7 +3,7 @@ defmodule WebhookMe.Router.Webhook.V1   do
 
   def coder do
     Hashids.new([salt: Application.get_env(:webhook_me, :hashids_salt),
-                min_len: 10 ])
+                min_len: 10])
   end
 
   @default_message """
