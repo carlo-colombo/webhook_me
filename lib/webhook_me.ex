@@ -2,9 +2,11 @@ defmodule WebhookMe do
   use Maru.Router
   require Logger
   alias WebhookMe.Router.TelegramHook
+  alias TelegramBot.Utils.TokenValidation
 
   before do
     plug Plug.Logger
+    plug TokenValidation, paths: [:status, :hook]
     plug Plug.Parsers,
     pass: ["*/*"],
     json_decoder: Poison,
