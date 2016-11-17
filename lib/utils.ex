@@ -53,14 +53,20 @@ defmodule TelegramBot.Utils do
   defmodule TokenValidation do
     use Maru.Middleware
 
-    def call(conn, opts) do
-      paths = conn.path_info
+    def init([paths: paths]), do: paths
 
-      if Enum.member?(opts[:paths], :hook)
-        and hd(paths) != Application.get_env(:nadia, :token) do
-        send_resp(conn, 501, "Invalid token")
+    def call(%{path_info: [token_part, part | _rest]} = conn, paths) do
+      token = Application.get_env(:nadia, :token)
+
+      if Enum.member?(paths, part) and token_part != token do
+        conn
+        |> put_status(501)
+        |> text("Invalid token")
+      else
+        conn
       end
-      conn
     end
+
+    def call(conn, _opts), do: conn
   end
 end

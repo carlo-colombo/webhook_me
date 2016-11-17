@@ -6,7 +6,7 @@ defmodule WebhookMe do
 
   before do
     plug Plug.Logger
-    plug TokenValidation, paths: [:status, :hook]
+    plug TokenValidation, paths: ["status", "hook"]
     plug Plug.Parsers,
     pass: ["*/*"],
     json_decoder: Poison,
