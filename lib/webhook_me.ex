@@ -8,9 +8,9 @@ defmodule WebhookMe do
     plug Plug.Logger
     plug TokenValidation, paths: ["status", "hook"]
     plug Plug.Parsers,
-    pass: ["*/*"],
-    json_decoder: Poison,
-    parsers: [:urlencoded, :json, :multipart]
+      pass: ["*/*"],
+      json_decoder: Poison,
+      parsers: [:urlencoded, :json, :multipart]
   end
 
   mount WebhookMe.Router.Webhook.V1
