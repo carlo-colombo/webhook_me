@@ -39,7 +39,7 @@ defmodule WebhookMe.Mixfile do
   defp deps do
     [{:nadia, "~> 0.4"},
      {:hashids, "~> 2.0"},
-     {:maru, "~> 0.10.4"},
+     {:maru, "~> 0.13.2"},
      {:exsync, "~> 0.1", only: :dev},
      {:distillery, "~> 0.10"},
      {:edib, "~> 0.8"},
