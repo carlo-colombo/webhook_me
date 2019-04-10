@@ -4,7 +4,7 @@
   "certifi": {:hex, :certifi, "0.7.0", "861a57f3808f7eb0c2d1802afeaae0fa5de813b0df0979153cbafcd853ababaf", [:rebar3], []},
   "cf": {:hex, :cf, "0.2.1", "69d0b1349fd4d7d4dc55b7f407d29d7a840bf9a1ef5af529f1ebe0ce153fc2ab", [:rebar3], []},
   "commander": {:hex, :commander, "0.1.4", "c5713a540c3e541cdb6befa5ec5476f6e3aa5ff75b6055c630efa0a881eaa591", [:mix], []},
-  "conform": {:hex, :conform, "2.1.1", "8e31fdf84e7bc4bf09aaab1de9f231d611fb39f58463c67f4dcf1803c78a4222", [:mix], [{:neotoma, "~> 1.7.3", [hex: :neotoma, optional: false]}]},
+  "conform": {:hex, :conform, "2.5.2", "7035787a9c09d28607745444e7a1700426dc47c452634a5694033fa2fbb3414c", [:mix], [{:neotoma, "~> 1.7.3", [hex: :neotoma, repo: "hexpm", optional: false]}], "hexpm"},
   "conform_exrm": {:hex, :conform_exrm, "1.0.0", "68d5923a74dad4169b51454d723d08ca1644b6a6deaf64eccd509fd084cd1343", [:mix], [{:conform, "> 0.0.0", [hex: :conform, optional: false]}, {:exrm, "> 0.0.0", [hex: :exrm, optional: false]}]},
   "cowboy": {:hex, :cowboy, "1.0.4", "a324a8df9f2316c833a470d918aaf73ae894278b8aa6226ce7a9bf699388f878", [:rebar, :make], [{:cowlib, "~> 1.0.0", [hex: :cowlib, optional: false]}, {:ranch, "~> 1.0", [hex: :ranch, optional: false]}]},
   "cowlib": {:hex, :cowlib, "1.0.2", "9d769a1d062c9c3ac753096f868ca121e2730b9a377de23dec0f7e08b1df84ee", [:make], []},
