@@ -41,7 +41,7 @@ defmodule WebhookMe.Mixfile do
      {:hashids, "~> 2.0"},
      {:maru, "~> 0.10.4"},
      {:exsync, "~> 0.1", only: :dev},
-     {:distillery, "~> 0.10"},
+     {:distillery, "~> 2.1"},
      {:edib, "~> 0.8"},
      {:conform, "~> 2.1", override: true},
      {:credo, "~> 0.4", only: [:test, :dev]},
