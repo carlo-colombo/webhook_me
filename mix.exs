@@ -44,7 +44,7 @@ defmodule WebhookMe.Mixfile do
      {:distillery, "~> 0.10"},
      {:edib, "~> 0.8"},
      {:conform, "~> 2.1", override: true},
-     {:credo, "~> 0.4", only: [:test, :dev]},
+     {:credo, "~> 1.1", only: [:test, :dev]},
      {:mock, "~> 0.1.3", only: :test}
    ]
   end
